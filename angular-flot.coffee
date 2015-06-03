@@ -51,6 +51,9 @@ angular.module 'angular-flot', []
             onDatasetChanged = (dataset) ->
                 if plot
                     plot.setData dataset
+                    if scope.callback
+                        console.log "angular-flot: post-init callback call"
+                        scope.callback(plot);
                     plot.setupGrid()
                     plot.draw()
                 else
